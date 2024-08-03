@@ -1,39 +1,34 @@
 public class HeapSort {
-    public void sort(int[] array) {
-        int n = array.length;
-
+    public static void heapSort(int[] arr) {
+        int n = arr.length;
         for (int i = n / 2 - 1; i >= 0; i--) {
-            heapify(array, n, i);
+            heapify(arr, n, i);
         }
-
-        for (int i = n - 1; i > 0; i--) {
-            swap(array, 0, i);
-            heapify(array, i, 0);
+        for (int i = n - 1; i >= 0; i--) {
+            swap(arr, 0, i);
+            heapify(arr, i, 0);
         }
     }
 
-    private void heapify(int[] array, int n, int i) {
+    private static void heapify(int[] arr, int n, int i) {
         int largest = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
-
-        if (left < n && array[left] > array[largest]) {
+        if (left < n && arr[left] > arr[largest]) {
             largest = left;
         }
-
-        if (right < n && array[right] > array[largest]) {
+        if (right < n && arr[right] > arr[largest]) {
             largest = right;
         }
-
         if (largest != i) {
-            swap(array, i, largest);
-            heapify(array, n, largest);
+            swap(arr, i, largest);
+            heapify(arr, n, largest);
         }
     }
 
-    private void swap(int[] array, int i, int j) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
